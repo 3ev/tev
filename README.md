@@ -1,4 +1,4 @@
-# 3EV Core TYPO3 Extension
+# 3ev Core TYPO3 Extension
 
 **Version:** 0.0.0
 
