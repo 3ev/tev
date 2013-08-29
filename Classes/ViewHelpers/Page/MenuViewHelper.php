@@ -14,7 +14,7 @@ class Tx_Tev_ViewHelpers_Page_MenuViewHelper
     /**
      * @var int $currentLevel Current menu level being rendered
      */
-    protected $currentLevel = 1;
+    protected $currentLevel = 0;
 
     /**
      * Add the new 'classItem' option.
@@ -41,7 +41,7 @@ class Tx_Tev_ViewHelpers_Page_MenuViewHelper
     {
         $classes = parent::getItemClass($pageRow);
         if ($ci = $this->arguments['classItem']) {
-            $classes[] = str_replace(':level', $this->currentLevel, $ci);
+            $classes[] = str_replace(':level', $this->currentLevel + 1, $ci);
         }
         return $classes;
     }
