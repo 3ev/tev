@@ -12,11 +12,6 @@ class Tx_Tev_ViewHelpers_Page_MenuViewHelper
     extends Tx_Vhs_ViewHelpers_Page_MenuViewHelper
 {
     /**
-     * @var int $currentLevel Current menu level being rendered
-     */
-    protected $currentLevel = 0;
-
-    /**
      * Add the new 'classItem' option.
      */
     public function initializeArguments()
@@ -31,23 +26,7 @@ class Tx_Tev_ViewHelpers_Page_MenuViewHelper
     }
 
     /**
-     * Adds 'classItem' to the array if set.
-     *
-     * @see Tx_Vhs_ViewHelpers_Page_Menu_Abstract_MenuViewHelper
-     * @param array $pageRow
-     * @return array
-     */
-    protected function getItemClass($pageRow)
-    {
-        $classes = parent::getItemClass($pageRow);
-        if ($ci = $this->arguments['classItem']) {
-            $classes[] = str_replace(':level', $this->currentLevel + 1, $ci);
-        }
-        return $classes;
-    }
-
-    /**
-     * Track the current menu level before rendering.
+     * Append item class before rendering.
      *
      * @see Tx_Vhs_ViewHelpers_Page_Menu_Abstract_MenuViewHelper
      * @param array $menu
@@ -56,7 +35,12 @@ class Tx_Tev_ViewHelpers_Page_MenuViewHelper
      */
     protected function autoRender($menu, $level = 1)
     {
-        $this->currentLevel = $level;
+        if ($ci = $this->arguments['classItem']) {
+            foreach ($menu as &$page) {
+                $page['class'] .= ' ' . str_replace(':level', $level, $ci);
+            }
+        }
+
         return parent::autoRender($menu, $level);
     }
 }
