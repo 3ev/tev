@@ -1,6 +1,6 @@
 # 3ev Core TYPO3 Extension
 
-**Version:** 0.0.0
+**Version:** 1.0.0
 
 Contains common setup and functionality that's useful for all 3ev TYPO3 sites.
 

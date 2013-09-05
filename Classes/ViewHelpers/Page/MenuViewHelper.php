@@ -63,7 +63,7 @@ class Tx_Tev_ViewHelpers_Page_MenuViewHelper
     }
 
     /**
-     * Fix error with hidden pages not showing correctly.
+     * Fix error with hidden pages not showing correctly with shortcuts.
      *
      * @see Tx_Vhs_ViewHelpers_Page_Menu_Abstract_MenuViewHelper
      * @param array $page
@@ -73,12 +73,8 @@ class Tx_Tev_ViewHelpers_Page_MenuViewHelper
     protected function getMenuItemEntry($page, $rootLine)
     {
         $page = parent::getMenuItemEntry($page, $rootLine);
-        if (!$this->arguments['showHidden']) {
-            $addWhere = 'AND nav_hide=0';
-        } else {
-            $addWhere = '';
-        }
-        $page['hasSubPages'] = (count($this->pageSelect->getMenu($page['uid'], $fields = '*', $sortField = 'sorting', $addWhere)) > 0) ? 1 : 0;
+        $page['hasSubPages'] = (count($this->getSubmenu($page['uid'])) > 0) ? 1 : 0;
+        $page['class'] = implode(' ', $this->getItemClass($page));
         return $page;
     }
 }
