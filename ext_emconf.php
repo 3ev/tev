@@ -18,7 +18,6 @@ $EM_CONF[$_EXTKEY] = array(
 	'author_email' => 'benconstable@3ev.com',
 	'author_company' => '3ev',
 	'shy' => 0,
-	'dependencies' => 'cms,flux,fluidpages,fluidcontent,vhs',
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
@@ -30,10 +29,10 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '1.0.1',
+	'version' => '1.0.2',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '6.1.0-0.0.0',
+			'typo3' => '6.1.3-0.0.0',
 			'php' => '5.3.6-5.4.x',
 			'flux' => '',
 			'fluidcontent' => '',
@@ -44,7 +43,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'conflicts' => array(
 		),
 		'suggests' => array(
-		),
+		)
 	)
 );
 
