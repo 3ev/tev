@@ -1,15 +1,5 @@
 <?php
 
-########################################################################
-# Extension Manager/Repository config file for ext "tev".
-#
-# Auto generated 16-08-2013 15:12
-#
-# Manual updates:
-# Only the data in the array - everything else is removed by next
-# writing. "version" and "dependencies" must not be touched!
-########################################################################
-
 $EM_CONF[$_EXTKEY] = array(
 	'title' => '3ev Core',
 	'description' => 'Core functionality for all 3ev extensions',
@@ -29,11 +19,11 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '1.0.4',
+	'version' => '1.0.5',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '6.1.3-0.0.0',
-			'php' => '5.3.6-5.4.x',
+			'php' => '5.3.7-5.4.x',
 			'flux' => '',
 			'fluidcontent' => '',
 			'fluidpages' => '',
