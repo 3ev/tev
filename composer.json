@@ -9,7 +9,7 @@
             "homepage": "http://www.3ev.com"
         }
     ],
-    "type": "typo3-cms-package",
+    "type": "typo3-cms-extension",
     "require": {
         "composer/installers": "1.0.6"
     }
