@@ -13,7 +13,7 @@ namespace Tev\Tev\Utility;
  * $markup        = $dbUpdate->renderUpdateStatements();
  *
  * @author Ben Constable, 3ev
- * @package Tev
+ * @package Tev\Tev
  * @subpackage Utility
  */
 class ExtUpdateUtility
