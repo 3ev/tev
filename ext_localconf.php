@@ -9,7 +9,7 @@ Tx_Flux_Core::addGlobalTypoScript('EXT:fluidcontent/Configuration/TypoScript');
 Tx_Flux_Core::addGlobalTypoScript('EXT:tev/Configuration/TypoScript');
 
 // Hook into RealURL config generation
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/realurl/class.tx_realurl_autoconfgen.php']['extensionConfiguration']['tev'] = 'Tx_Tev_Url_AutoConfigurationGenerator->updateConfig';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/realurl/class.tx_realurl_autoconfgen.php']['extensionConfiguration']['tev'] = 'Tev\\Tev\\Hook\\RealUrlAutoConfigurationHook->updateConfig';
 
 // Add new cache type to clear RealURL config
 $TYPO3_CONF_VARS['SC_OPTIONS']['additionalBackendItems']['cacheActions'][] = 'Tx_Tev_Url_CacheMenu';

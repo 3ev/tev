@@ -1,14 +1,20 @@
 <?php
 
+namespace Tev\Tev\Hook;
+
 /**
  * Used to modify the default RealURL autoconfig, and generate fixed post vars
  * for pages from the CMS config fields.
+ *
+ * @author Ben Constable <benconstable@3ev.com>, 3ev
+ * @package Tev\Tev
+ * @subpackage Hook
  */
-class Tx_Tev_Url_AutoConfigurationGenerator
+class RealUrlAutoConfigurationHook
 {
     /**
      * Overrides some of the built in options that RealURL autogenerates.
-     * 
+     *
      * @param array  $params
      * @param object $reference
      * @return array
@@ -20,7 +26,7 @@ class Tx_Tev_Url_AutoConfigurationGenerator
         // init
         $config['init']['emptyUrlReturnValue']    = '/';
         $config['init']['postVarSet_failureMode'] = 'ignore';
-        $config['init']['enableCHashCache']       = false;
+        $config['init']['enableCHashCache']       = true;
 
         // fileName
         $config['fileName']['acceptHTMLsuffix']   = 0;
