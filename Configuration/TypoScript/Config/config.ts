@@ -17,7 +17,7 @@ config {
 
     # Remove XHTML stuff
     xmlprologue = none
- 
+
     # Set HTML language from current system language
     htmlTag_setParams = lang="{$config.language}"
 
@@ -44,4 +44,8 @@ config {
 
     # Concat JS automatically
     concatenateJs = 1
+
+    # Enable TypoLink across domains
+    config.typolinkCheckRootline = 1
+    config.typolinkEnableLinksAcrossDomains = 1
 }
