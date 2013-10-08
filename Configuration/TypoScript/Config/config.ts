@@ -46,6 +46,6 @@ config {
     concatenateJs = 1
 
     # Enable TypoLink across domains
-    config.typolinkCheckRootline = 1
-    config.typolinkEnableLinksAcrossDomains = 1
+    typolinkCheckRootline = 1
+    typolinkEnableLinksAcrossDomains = 1
 }
