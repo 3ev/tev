@@ -30,6 +30,13 @@ class RealUrlAutoConfigurationHook
 
         // fileName
         $config['fileName']['acceptHTMLsuffix']   = 0;
+        $config['fileName']['index']              = array(
+            '.pdf' => array(
+                'keyValues' => array(
+                    'extension' => 'pdf'
+                )
+            )
+        );
 
         // generate fixed post vars
         if (!isset($config['fixedPostVars']) || !is_array($config['fixedPostVars'])) {
