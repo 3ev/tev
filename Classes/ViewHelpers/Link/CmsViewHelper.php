@@ -71,7 +71,11 @@ class Tx_Tev_ViewHelpers_Link_CmsViewHelper extends Tx_Fluid_Core_ViewHelper_Abs
                     ->setCreateAbsoluteUri(true)
                     ->build();
             } else {
-                $formattedLink = 'http://' . $link;
+                $parsedLink = parse_url($link);
+                if (empty($parsedLink['scheme'])) {
+                    $link = 'http://' . ltrim($link, '/');
+                }
+                $formattedLink = $link;
             }
         } else {
             $formattedLink = null;
