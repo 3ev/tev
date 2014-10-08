@@ -7,9 +7,15 @@ class Tx_Tev_Url_Cache
 {
     /**
      * Clear cached RealURL config.
+     *
+     * @return void
      */
     public function clear()
     {
-        unlink(PATH_site . 'typo3conf/realurl_autoconf.php');
+        $file = PATH_site . 'typo3conf/realurl_autoconf.php';
+
+        if (file_exists($file)) {
+            unlink($file);
+        }
     }
 }
