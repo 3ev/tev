@@ -32,3 +32,7 @@ $pageTsConfig = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(
     '0,1,4',
     'after:tx_realurl_exclude'
 );
+
+// Save hooks
+
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'Tev\\Tev\\Hook\\PageSaveHook';
