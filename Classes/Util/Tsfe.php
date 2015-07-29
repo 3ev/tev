@@ -1,6 +1,6 @@
 <?php
 
-namespace Tev\Tev\Utils;
+namespace Tev\Tev\Util;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
