@@ -1,4 +1,5 @@
 <?php
+namespace Tev\Tev\Command;
 
 /**
  * Base class for CLI scripts.
@@ -34,7 +35,7 @@
  * @package tev
  * @subpackage Cli
  */
-class Tx_Tev_Command_BaseCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandController
+class BaseCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandController
 {
 
     /**

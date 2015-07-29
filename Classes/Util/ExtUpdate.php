@@ -1,6 +1,6 @@
 <?php
 
-namespace Tev\Tev\Utility;
+namespace Tev\Tev\Util;
 
 /**
  * Utility class to allow class.ext_update.php scripts to execute changes
@@ -9,14 +9,14 @@ namespace Tev\Tev\Utility;
  * Example usage (in the `main()` method of your class.ext_update.php):
  *
  * $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
- * $dbUpdate      = $objectManager->get('Tev\\Tev\\Utility\\ExtUpdateUtility', 'ext_key');
+ * $dbUpdate      = $objectManager->get('Tev\\Tev\\Util\\ExtUpdate', 'ext_key');
  * $markup        = $dbUpdate->renderUpdateStatements();
  *
  * @author Ben Constable, 3ev
  * @package Tev\Tev
- * @subpackage Utility
+ * @subpackage Util
  */
-class ExtUpdateUtility
+class ExtUpdate
 {
     /**
      * @var TYPO3\CMS\Extbase\Object\ObjectManager $objectManager

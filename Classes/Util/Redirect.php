@@ -1,6 +1,6 @@
 <?php
 
-namespace Tev\Tev\Utility;
+namespace Tev\Tev\Util;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -9,9 +9,9 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Ben Constable, 3ev
  * @package Tev\Tev
- * @subpackage Utility
+ * @subpackage Util
  */
-class RedirectUtility
+class Redirect
 {
     /**
      * Create a RealURL redirect in the database.

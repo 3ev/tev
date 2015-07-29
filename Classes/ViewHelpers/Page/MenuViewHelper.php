@@ -1,5 +1,9 @@
 <?php
 
+namespace Tev\Tev\ViewHelpers\Page;
+
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /**
  * Subclasses the VHS Menu view helper to add an extra class option for menu
  * items.
@@ -8,8 +12,7 @@
  * @package tev
  * @subpackage ViewHelpers\Page
  */
-class Tx_Tev_ViewHelpers_Page_MenuViewHelper
-    extends Tx_Vhs_ViewHelpers_Page_MenuViewHelper
+class MenuViewHelper extends AbstractViewHelper
 {
     /**
      * Add the new 'classItem' option.

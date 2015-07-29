@@ -1,9 +1,11 @@
 <?php
 
+namespace Tev\Tev\Url;
+
 /**
  * Used to clear the config caches for URLs.
  */
-class Tx_Tev_Url_Cache
+class Cache
 {
     /**
      * Clear cached RealURL config.

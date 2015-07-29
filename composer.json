@@ -1,6 +1,7 @@
 {
     "name": "3ev/tev",
     "description": "3ev Core TYPO3 Extension",
+    "type": "typo3-cms-extension",
     "homepage": "https://github.com/3ev/tev",
     "authors": [
         {
@@ -9,9 +10,12 @@
             "homepage": "http://www.3ev.com"
         }
     ],
-    "type": "typo3-cms-extension",
+    "autoload": {
+        "psr-4": {
+            "Tev\\Tev\\": "Classes/"
+        }
+    },
     "require": {
-        "php": ">=5.3.7",
-        "composer/installers": "1.0.6"
+        "php": ">=5.5.0"
     }
 }

@@ -1,5 +1,9 @@
 <?php
 
+namespace Tev\Tev\ViewHelpers\Link;
+
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /**
  * Link view helper to create links based on config from the 'link' wizard in
  * the CMS.
@@ -8,7 +12,7 @@
  * @package tev
  * @subpackage ViewHelpers\Link
  */
-class Tx_Tev_ViewHelpers_Link_CmsViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper
+class CmsViewHelper extends AbstractViewHelper
 {
     /**
      * @see parent::initializeArguments()
