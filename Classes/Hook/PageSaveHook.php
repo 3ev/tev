@@ -1,7 +1,7 @@
 <?php
 namespace Tev\Tev\Hook;
 
-use Tx_Tev_Url_Cache;
+use Tev\Tev\Url\Cache;
 
 /**
  * Hook for saving pages.
@@ -29,7 +29,7 @@ class PageSaveHook
     {
         if ($table === 'pages') {
             if (($status === 'new') || isset($fieldArray['tx_tev_postvars']) || isset($fieldArray['tx_tev_childpostvars'])) {
-                $urlCache = new Tx_Tev_Url_Cache;
+                $urlCache = new Cache;
                 $urlCache->clear();
             }
         }

@@ -1,15 +1,17 @@
 <?php
 
+namespace Tev\Tev\Url;
+
 /**
  * Used to add a new cache type to the backend dropdown.
  */
-class Tx_Tev_Url_CacheMenu implements \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface
+class CacheMenu implements \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface
 {
     /**
      * Add new cache menu option.
      * 
-     * @param array  $params
-     * @param object $reference
+     * @param array  $cacheActions
+     * @param array $optionValues
      */
     public function manipulateCacheActions(&$cacheActions, &$optionValues)
     {        

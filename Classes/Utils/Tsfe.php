@@ -1,11 +1,13 @@
 <?php
 
+namespace Tev\Tev\Utils;
+
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Utility class to bootstrap the TSFE (mostly for use in CLI modules).
  */
-class Tx_Tev_Utils_Tsfe
+class Tsfe
 {
     /**
      * Bootstrap TSFE.
