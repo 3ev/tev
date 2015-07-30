@@ -8,7 +8,7 @@ namespace Tev\Tev\Command;
  *
  * Example command:
  *
- * class Tx_MyExt_Command_MycontrollerCommandController extends Tx_Tev_Command_BaseCommandController
+ * class Tev\MyExt\Command\MycontrollerCommandController extends Tev\Tev\Command\BaseCommandController
  * {
  *     /**
  *      * My test command.
