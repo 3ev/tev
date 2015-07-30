@@ -1,7 +1,5 @@
 # 3ev Core TYPO3 Extension
 
-**Version:** 1.3.0
-
 Contains common setup and functionality that's useful for all 3ev TYPO3 sites.
 
 - Sets up core TypoScript configuration common to all projects
@@ -20,24 +18,6 @@ Install into TYPO3 with Composer. Add the following config to your `composer.jso
 {
     "require": {
         "3ev/tev": "master"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/3ev/tev"
-        }
-    ]
-}
-```
-
-If your `composer.json` sits outside of your TYPO3 directory, you'll need to add:
-
-```json
-{
-    "extra": {
-        "installer-paths": {
-            "path/to/typo3/typo3conf/ext/{$name}/": ["type:typo3-cms-extension"]
-        }
     }
 }
 ```
