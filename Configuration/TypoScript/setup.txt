@@ -3,14 +3,22 @@
 ###################################################
 
 # Config
+
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:tev/Configuration/TypoScript/Config/language.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:tev/Configuration/TypoScript/Config/config.ts">
 
 # Plugin
+
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:tev/Configuration/TypoScript/Plugin/tx_cssstyledcontent.ts">
 
 # Content
+
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:tev/Configuration/TypoScript/Content/tt_content.ts">
 
 # Page
+
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:tev/Configuration/TypoScript/Page/page.ts">
+
+# Lib
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:tev/Configuration/TypoScript/Lib/wrap.ts">

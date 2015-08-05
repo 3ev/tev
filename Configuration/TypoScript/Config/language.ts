@@ -12,7 +12,8 @@ config {
 }
 
 # Example language config
-#[globalVar = GP:L = 1]    
+
+#[globalVar = GP:L = 1]
 #    config.sys_language_uid = 1
 #    config.language = {$config.language}
 #[global]
