@@ -21,9 +21,9 @@ config {
 
     xmlprologue = none
 
-    # Set HTML language from current system language
+    # Set HTML language to en for now
 
-    htmlTag_setParams = lang="{$config.language}"
+    htmlTag_setParams = lang="en"
 
     # Enable RealURL
 
