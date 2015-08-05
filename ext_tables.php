@@ -1,13 +1,17 @@
 <?php
 
-if (!defined ('TYPO3_MODE')) die ('Access denied.');
+if (!defined ('TYPO3_MODE')) {
+    die ('Access denied.');
+}
 
 // Add Page TS Config
+
 $pageTsConfig = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TsConfig/Page/config.ts');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig($pageTsConfig);
 
 // Add config for RealURL fixedPostVars
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', array(
     'tx_tev_postvars' => array(
         'exclude' => 1,
@@ -26,6 +30,7 @@ $pageTsConfig = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(
         )
     )
 ), 1);
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'pages',
     'tx_tev_postvars, tx_tev_childpostvars',
