@@ -1,5 +1,4 @@
 <?php
-
 namespace Tev\Tev\Url;
 
 /**

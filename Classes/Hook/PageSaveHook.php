@@ -5,10 +5,6 @@ use Tev\Tev\Url\Cache;
 
 /**
  * Hook for saving pages.
- *
- * @author     Ben Constable <benconstable@3ev.com>, 3ev
- * @package    Tev\Tev
- * @subpackage Hook
  */
 class PageSaveHook
 {

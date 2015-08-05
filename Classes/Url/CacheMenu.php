@@ -1,5 +1,4 @@
 <?php
-
 namespace Tev\Tev\Url;
 
 /**
@@ -9,18 +8,19 @@ class CacheMenu implements \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInter
 {
     /**
      * Add new cache menu option.
-     * 
-     * @param array  $cacheActions
-     * @param array $optionValues
+     *
+     * @param  array $cacheActions
+     * @param  array $optionValues
+     * @return void
      */
     public function manipulateCacheActions(&$cacheActions, &$optionValues)
-    {        
+    {
         $cacheActions[] = array(
             'id'    => 'tev_cache_url',
             'title' => 'Clear generated RealURL config',
             'href' => 'ajax.php?ajaxID=tx_tev::clearcacheurl'
         );
-        
+
         $optionValues[] = 'clearCacheTevUrl';
     }
 }

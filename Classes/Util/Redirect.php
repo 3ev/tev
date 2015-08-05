@@ -1,15 +1,10 @@
 <?php
-
 namespace Tev\Tev\Util;
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Simple utility class to create database redirects.
- *
- * @author Ben Constable, 3ev
- * @package Tev\Tev
- * @subpackage Util
  */
 class Redirect
 {

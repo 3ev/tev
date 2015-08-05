@@ -1,5 +1,4 @@
 <?php
-
 namespace Tev\Tev\ViewHelpers\Page;
 
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -7,15 +6,13 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 /**
  * Subclasses the VHS Menu view helper to add an extra class option for menu
  * items.
- *
- * @author Ben Constable <benconstable@3ev.com>, 3ev
- * @package tev
- * @subpackage ViewHelpers\Page
  */
 class MenuViewHelper extends AbstractViewHelper
 {
     /**
      * Add the new 'classItem' option.
+     *
+     * @return void
      */
     public function initializeArguments()
     {
@@ -41,9 +38,8 @@ class MenuViewHelper extends AbstractViewHelper
     /**
      * Append item class before rendering.
      *
-     * @see Tx_Vhs_ViewHelpers_Page_Menu_Abstract_MenuViewHelper
-     * @param array $menu
-     * @param integer $level
+     * @param  array  $menu
+     * @param  int    $level
      * @return string
      */
     protected function autoRender($menu, $level = 1)
@@ -68,9 +64,8 @@ class MenuViewHelper extends AbstractViewHelper
     /**
      * Fix error with hidden pages not showing correctly with shortcuts.
      *
-     * @see Tx_Vhs_ViewHelpers_Page_Menu_Abstract_MenuViewHelper
-     * @param array $page
-     * @param array $rootLine
+     * @param  array $page
+     * @param  array $rootLine
      * @return array
      */
     protected function getMenuItemEntry($page, $rootLine)

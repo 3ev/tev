@@ -1,22 +1,17 @@
 <?php
-
 namespace Tev\Tev\Hook;
 
 /**
  * Used to modify the default RealURL autoconfig, and generate fixed post vars
  * for pages from the CMS config fields.
- *
- * @author Ben Constable <benconstable@3ev.com>, 3ev
- * @package Tev\Tev
- * @subpackage Hook
  */
 class RealUrlAutoConfigurationHook
 {
     /**
      * Overrides some of the built in options that RealURL autogenerates.
      *
-     * @param array  $params
-     * @param object $reference
+     * @param  array     $params
+     * @param  \stdClass $reference
      * @return array
      */
     public function updateConfig($params, $reference)

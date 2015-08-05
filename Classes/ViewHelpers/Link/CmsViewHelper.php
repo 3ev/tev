@@ -1,5 +1,4 @@
 <?php
-
 namespace Tev\Tev\ViewHelpers\Link;
 
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -7,10 +6,6 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 /**
  * Link view helper to create links based on config from the 'link' wizard in
  * the CMS.
- *
- * @author Ben Constable <benconstable@3ev.com>, 3ev
- * @package tev
- * @subpackage ViewHelpers\Link
  */
 class CmsViewHelper extends AbstractViewHelper
 {
@@ -89,7 +84,7 @@ class CmsViewHelper extends AbstractViewHelper
             'link'     => $formattedLink,
             'target'   => $this->parseCmsOption($linkOptions[1]),
             'cssClass' =>
-                $this->parseCmsOption($linkOptions[2]) . 
+                $this->parseCmsOption($linkOptions[2]) .
                 ($this->arguments['extraClass'] ? ' ' . $this->arguments['extraClass'] : ''),
             'title'    => $this->parseCmsOption($linkOptions[3]) ?: $this->arguments['title']
         );

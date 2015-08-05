@@ -1,6 +1,7 @@
 <?php
-
 namespace Tev\Tev\Util;
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Utility class to allow class.ext_update.php scripts to execute changes
@@ -11,10 +12,6 @@ namespace Tev\Tev\Util;
  * $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
  * $dbUpdate      = $objectManager->get('Tev\\Tev\\Util\\ExtUpdate', 'ext_key');
  * $markup        = $dbUpdate->renderUpdateStatements();
- *
- * @author Ben Constable, 3ev
- * @package Tev\Tev
- * @subpackage Util
  */
 class ExtUpdate
 {
@@ -45,7 +42,7 @@ class ExtUpdate
      */
     public function __construct($extension)
     {
-        $this->objectManager    = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+        $this->objectManager    = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
         $this->installUtility   = $this->objectManager->get('TYPO3\\CMS\\Extensionmanager\\Utility\\InstallUtility');
         $this->extension        = $this->installUtility->enrichExtensionWithDetails($extension);
         $this->updateStatements = null;
@@ -61,7 +58,7 @@ class ExtUpdate
      */
     public function renderUpdateStatements()
     {
-        $update = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('updatedb');
+        $update = GeneralUtility::_GP('updatedb');
         $updateStatements = $this->getUpdateStatements();
         $markup = '<h3>Database Updates</h3>';
 
@@ -131,7 +128,7 @@ class ExtUpdate
             $extTablesSqlFile = PATH_site . $this->extension['siteRelPath'] . '/ext_tables.sql';
             $extTablesSqlContent = '';
             if (file_exists($extTablesSqlFile)) {
-                $extTablesSqlContent .= \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl($extTablesSqlFile);
+                $extTablesSqlContent .= GeneralUtility::getUrl($extTablesSqlFile);
             }
 
             if ($extTablesSqlContent) {
