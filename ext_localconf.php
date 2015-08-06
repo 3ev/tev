@@ -12,8 +12,3 @@ if (!defined ('TYPO3_MODE')) {
 // Hook into RealURL config generation
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/realurl/class.tx_realurl_autoconfgen.php']['extensionConfiguration']['tev'] = 'Tev\\Tev\\Hook\\RealUrlAutoConfigurationHook->updateConfig';
-
-// Add new cache type to clear RealURL config
-
-$TYPO3_CONF_VARS['SC_OPTIONS']['additionalBackendItems']['cacheActions'][] = 'Tev\\Tev\\Url\\CacheMenu';
-$TYPO3_CONF_VARS['BE']['AJAX']['tx_tev::clearcacheurl'] = 'Tev\\Tev\\Url\\Cache->clear';

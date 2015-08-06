@@ -1,10 +1,14 @@
 <?php
 namespace Tev\Tev\Url;
 
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Backend\Utility\IconUtility;
+use TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface;
+
 /**
  * Used to add a new cache type to the backend dropdown.
  */
-class CacheMenu implements \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface
+class CacheMenu implements ClearCacheActionsHookInterface
 {
     /**
      * Add new cache menu option.
@@ -16,9 +20,10 @@ class CacheMenu implements \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInter
     public function manipulateCacheActions(&$cacheActions, &$optionValues)
     {
         $cacheActions[] = array(
-            'id'    => 'tev_cache_url',
-            'title' => 'Clear generated RealURL config',
-            'href' => 'ajax.php?ajaxID=tx_tev::clearcacheurl'
+            'id' => 'tev_cache_url',
+            'title' => 'Flush RealURL config',
+            'href' => BackendUtility::getAjaxUrl('TevTevAjax::clearRealurlConfig'),
+            'icon' => IconUtility::getSpriteIcon('actions-system-cache-clear-impact-low')
         );
 
         $optionValues[] = 'clearCacheTevUrl';
