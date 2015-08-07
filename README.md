@@ -16,7 +16,7 @@ Install the TYPO3 extension through the Extension Manager. The extension provide
 the following features:
 
 * Automatically included, sensible Typoscript settings
-* Useful automatic RealURL configuration, including additional page settings and automatic cache clearing
+* Useful automatic RealURL configuration, including additional page settings for pretty Extbase URLs
 * Some additional useful utility classes and view helpers
 
 ##License
