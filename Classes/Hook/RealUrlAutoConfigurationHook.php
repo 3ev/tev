@@ -19,62 +19,101 @@ class RealUrlAutoConfigurationHook
         $config = $params['config'];
 
         // init
-        $config['init']['emptyUrlReturnValue']    = '/';
+
+        $config['init']['emptyUrlReturnValue'] = '/';
         $config['init']['postVarSet_failureMode'] = 'ignore';
-        $config['init']['enableCHashCache']       = true;
+        $config['init']['enableCHashCache'] = true;
 
         // fileName
-        $config['fileName']['acceptHTMLsuffix']   = 0;
-        $config['fileName']['index']              = array(
-            '.pdf' => array(
-                'keyValues' => array(
-                    'extension' => 'pdf'
-                )
-            )
-        );
 
-        // generate fixed post vars
+        $config['fileName']['acceptHTMLsuffix'] = 0;
+        $config['fileName']['index'] = [
+            '.pdf' => [
+                'keyValues' => [
+                    'extension' => 'pdf'
+                ]
+            ]
+        ];
+
+        // Generate fixedPostVars
+
         if (!isset($config['fixedPostVars']) || !is_array($config['fixedPostVars'])) {
-            $config['fixedPostVars'] = array();
+            $config['fixedPostVars'] = [];
         }
 
         $pages = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
-            'uid,pid,tx_tev_postvars',
+            'uid,pid,tx_tev_realurl_extbase_extension,tx_tev_realurl_extbase_plugin,tx_tev_realurl_extbase_inc_controller,tx_tev_realurl_extbase_inc_action,tx_tev_realurl_extbase_args',
             'pages',
             'deleted = 0'
         );
 
-        foreach ($pages as $page) {
-            // Check parent page for routing options if none found
-            if (!($params = $page['tx_tev_postvars'])) {
-                $parent = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
-                    'uid,tx_tev_childpostvars',
-                    'pages',
-                    'deleted = 0 AND uid = ' . $page['pid']
-                );
+        foreach ($pages as $p) {
+            if ($p['tx_tev_realurl_extbase_extension'] && $p['tx_tev_realurl_extbase_plugin']) {
+                $c = [];
 
-                if (count($parent)) {
-                    $params = $parent[0]['tx_tev_childpostvars'];
-                }
-            }
-
-            if ($params) {
-                $params = explode('/', $params);
-
-                if (!is_array($config['fixedPostVars'][$page['uid']])) {
-                    $config['fixedPostVars'][$page['uid']] = array();
+                if ($p['tx_tev_realurl_extbase_inc_controller']) {
+                    $c[] = $this->addGetVar($p, 'controller');
                 }
 
-                foreach ($params as $param) {
-                    if (strlen($param)) {
-                        $config['fixedPostVars'][$page['uid']][] = array(
-                            'GETvar'  => $param
-                        );
+                if ($p['tx_tev_realurl_extbase_inc_action']) {
+                    $c[] = $this->addGetVar($p, 'action');
+                }
+
+                foreach (explode(',', $p['tx_tev_realurl_extbase_args']) as $arg) {
+                    if (strlen($arg)) {
+                        $c[] = $this->addGetVar($p, $arg);
                     }
                 }
+
+                if (!$p['tx_tev_realurl_extbase_inc_controller']) {
+                    $c[] = $this->addGetVar($p, 'controller', true);
+                }
+
+                if (!$p['tx_tev_realurl_extbase_inc_action']) {
+                    $c[] = $this->addGetVar($p, 'action', true);
+                }
+
+                $config['fixedPostVars'][$p['uid']] = $c;
             }
         }
 
         return $config;
+    }
+
+    /**
+     * Create GETvar config.
+     *
+     * @param  array   $page   Page fields
+     * @param  string  $name   Var name
+     * @param  boolean $bypass Whether or not to add bypass config to the var
+     * @return array
+     */
+    private function addGetVar($page, $name, $bypass = false)
+    {
+        $prefix = $this->getArgPrefix($page);
+
+        $conf = [
+            'GETvar' => $prefix . "[{$name}]"
+        ];
+
+        if ($bypass) {
+            $conf['noMatch'] = 'bypass';
+        }
+
+        return $conf;
+    }
+
+    /**
+     * Get the GETvar arg prefix for the given page.
+     *
+     * @param  array  $page Page fields
+     * @return string
+     */
+    private function getArgPrefix($page)
+    {
+        return
+            'tx_' .
+            strtolower(str_replace('_', '', $page['tx_tev_realurl_extbase_extension'])) . '_' .
+            strtolower($page['tx_tev_realurl_extbase_plugin']);
     }
 }
