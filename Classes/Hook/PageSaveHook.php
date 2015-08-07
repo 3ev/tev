@@ -24,9 +24,14 @@ class PageSaveHook
     public function processDatamap_afterDatabaseOperations($status, $table, $id, &$fieldArray, &$pObj)
     {
         if ($table === 'pages') {
-            if (($status === 'new') || isset($fieldArray['tx_tev_postvars']) || isset($fieldArray['tx_tev_childpostvars'])) {
-                $urlCache = new Cache;
-                $urlCache->clear();
+            if (($status === 'new') ||
+                isset($fieldArray['tx_tev_realurl_extbase_extension']) ||
+                isset($fieldArray['tx_tev_realurl_extbase_plugin']) ||
+                isset($fieldArray['tx_tev_realurl_extbase_inc_controller']) ||
+                isset($fieldArray['tx_tev_realurl_extbase_inc_action']) ||
+                isset($fieldArray['tx_tev_realurl_extbase_args'])
+            ) {
+                (new Cache)->clear();
             }
         }
     }
