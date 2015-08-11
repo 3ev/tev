@@ -18,6 +18,7 @@ the following features:
 * Automatically included, sensible Typoscript settings
 * Useful automatic RealURL configuration, including additional page settings for pretty Extbase URLs
 * Some additional useful utility classes and view helpers
+* Google Map controls for use in the TCA
 
 ##License
 
