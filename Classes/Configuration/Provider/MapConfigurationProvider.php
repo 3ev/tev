@@ -24,13 +24,6 @@ namespace Tev\Tev\Configuration\Provider;
 class MapConfigurationProvider
 {
     /**
-     * Whether or not the Google Maps API has aleady been included.
-     *
-     * @var boolean
-     */
-    private static $libIncluded = false;
-
-    /**
      * Default latitude when none is set.
      */
     const MAP_DEFAULT_LAT = 51.5010225124716;
@@ -39,6 +32,13 @@ class MapConfigurationProvider
      * Default longitude when none is set.
      */
     const MAP_DEFAULT_LNG = -0.14241416360471248;
+
+    /**
+     * Whether or not the Google Maps API has aleady been included.
+     *
+     * @var boolean
+     */
+    private static $libIncluded = false;
 
     /**
      * Run the configuration provider.
