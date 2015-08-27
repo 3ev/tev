@@ -14,6 +14,7 @@ namespace Tev\Tev\Configuration\Provider;
  *             'type' => 'user',
  *             'userFunc' => 'Tev\\Tev\\Configuration\\Provider\\MapConfigurationProvider->run',
  *             'parameters' => [
+ *                 'map_field' => 'map', // Name of this field
  *                 'lat_field' => 'lat', // Name of lat field to save value in (required)
  *                 'lng_field' => 'lng', // Name of lng field to save value in (required)
  *                 'api_key' => 'xxxxxxxxxxxxxxxx' // Google Maps API key (required)
@@ -49,10 +50,11 @@ class MapConfigurationProvider
      */
     public function run($data, $form)
     {
-        $latField = $data['parameters']['lat_field'];
-        $lngField = $data['parameters']['lng_field'];
-        $lat = $data['row'][$latField];
-        $lng = $data['row'][$lngField];
+        $mapField = $this->getParameter('map_field', $data);
+        $latField = $this->getParameter('lat_field', $data);
+        $lngField = $this->getParameter('lng_field', $data);
+        $lat = isset($data['row'][$latField]) ? $data['row'][$latField] : null;
+        $lng = isset($data['row'][$lngField]) ? $data['row'][$lngField] : null;
 
         if (!$lat || !$lng) {
             $lat = self::MAP_DEFAULT_LAT;
@@ -63,7 +65,13 @@ class MapConfigurationProvider
 
         $out  = $this->appendGoogleMaps($data['parameters']['api_key']);
         $out .= $this->appendMapContainer($mapId);
-        $out .= $this->appendMapSetup($mapId, $lat, $lng, $data['table'], $data['row']['uid'], $latField, $lngField);
+        $out .= $this->appendMapSetup(
+            $mapId,
+            $lat,
+            $lng,
+            $this->getFieldName($mapField, $latField, $data['itemFormElName']),
+            $this->getFieldName($mapField, $lngField, $data['itemFormElName'])
+        );
 
         return $out;
     }
@@ -108,18 +116,49 @@ class MapConfigurationProvider
     }
 
     /**
+     * Get another field name using a base name as a comparison.
+     *
+     * @param  string $base      Base field name
+     * @param  string $search    Full field name to search for
+     * @param  string $fullField Base full field name
+     * @return string
+     */
+    private function getFieldName($base, $search, $fullField)
+    {
+        return str_replace('[' . $base . ']', '[' . $search . ']', $fullField);
+    }
+
+    /**
+     * Get a configured parameter value.
+     *
+     * @param  string $key  Parameter name
+     * @param  array  $data Configuration data
+     * @return mixed        Value, or null if not set
+     */
+    private function getParameter($key, $data)
+    {
+        if (isset($data['parameters'][$key])) {
+            return $data['parameters'][$key];
+        } elseif (isset($data['fieldConf']['config']['arguments']) &&
+            isset($data['fieldConf']['config']['arguments'][$key])
+        ) {
+           return $data['fieldConf']['config']['arguments'][$key];
+        }
+
+        return null;
+    }
+
+    /**
      * Append the map setup script to the page.
      *
      * @param  string $id       Map element ID
      * @param  string $lat      Lat value
      * @param  string $lng      Lng value
-     * @param  string $table    Tablename of entity being edited
-     * @param  string $uid      UID of entity
      * @param  string $latField Target lat field name
      * @param  string $lngField Target lng field name
      * @return string
      */
-    private function appendMapSetup($id, $lat, $lng, $table, $uid, $latField, $lngField)
+    private function appendMapSetup($id, $lat, $lng, $latField, $lngField)
     {
         return "
             <script>
@@ -142,10 +181,10 @@ class MapConfigurationProvider
 
                     g.maps.event.addListener(marker, 'dragend', function (e) {
                         var p = marker.getPosition()
-                        j('input[name=\"data[{$table}][{$uid}][{$latField}]_hr\"]').first().val(p.lat())
-                        j('input[name=\"data[{$table}][{$uid}][{$lngField}]_hr\"]').first().val(p.lng())
-                        j('input[name=\"data[{$table}][{$uid}][{$latField}]\"]').first().val(p.lat())
-                        j('input[name=\"data[{$table}][{$uid}][{$lngField}]\"]').first().val(p.lng())
+                        j('input[name=\"{$latField}_hr\"]').first().val(p.lat())
+                        j('input[name=\"{$lngField}_hr\"]').first().val(p.lng())
+                        j('input[name=\"{$latField}\"]').first().val(p.lat())
+                        j('input[name=\"{$lngField}\"]').first().val(p.lng())
                     })
                 })(window.TYPO3.jQuery, window.google);
             </script>
