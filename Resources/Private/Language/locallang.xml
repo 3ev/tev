@@ -11,6 +11,11 @@
             <label index="pages.tx_tev_realurl_extbase_inc_controller">Include controller name in URL?</label>
             <label index="pages.tx_tev_realurl_extbase_inc_action">Include action name in URL?</label>
             <label index="pages.tx_tev_realurl_extbase_args">URL parameters (CSV)</label>
+
+            <label index="pages.tx_tev_menu_use_db">Load menu title from database table?</label>
+            <label index="pages.tx_tev_menu_table">Database table name</label>
+            <label index="pages.tx_tev_menu_field">Database field name (containing title)</label>
+            <label index="pages.tx_tev_menu_request_var">Request variable to load database row UID (separate with '.' for nested values)</label>
         </languageKey>
     </data>
 </T3locallang>
