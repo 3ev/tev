@@ -14,7 +14,7 @@
 
             <label index="pages.tx_tev_menu_use_db">Load menu title from database table?</label>
             <label index="pages.tx_tev_menu_table">Database table name</label>
-            <label index="pages.tx_tev_menu_field">Database field name (containing title)</label>
+            <label index="pages.tx_tev_menu_field">Database field name (containing title). Use a CSV for multiple fields, which will be space separate on the FE</label>
             <label index="pages.tx_tev_menu_request_var">Request variable to load database row UID (separate with '.' for nested values)</label>
         </languageKey>
     </data>

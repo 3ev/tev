@@ -84,7 +84,7 @@ class MenuTitleViewHelper extends AbstractViewHelper
      * Attempt to load the title from the database.
      *
      * @param  string      $table Table name
-     * @param  string      $field Title field name
+     * @param  string      $field Title field name, or CSV of names
      * @param  int         $id    Table row UID
      * @return string|null        Title or null if not found
      */
@@ -102,7 +102,14 @@ class MenuTitleViewHelper extends AbstractViewHelper
         // Get value
 
         if (is_array($rows) && count($rows)) {
-            return reset($rows)[$field];
+            $row = reset($rows);
+            $vals = [];
+
+            foreach (explode(',', $field) as $field) {
+                $vals[] = $row[trim($field)];
+            }
+
+            return implode(' ', $vals);
         } else {
             return null;
         }
