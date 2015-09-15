@@ -18,3 +18,15 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/realurl/class.tx_realurl_autoconf
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Storage\\Typo3DbQueryParser'] = [
    'className' => 'Tev\\Tev\\Extbase\\Persistence\\Generic\\Storage\\Typo3DbQueryParser'
 ];
+
+// Configure mail logger
+
+$tevConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['tev']);
+
+$GLOBALS['TYPO3_CONF_VARS']['LOG']['tevmail']['writerConfiguration'] = [
+    \TYPO3\CMS\Core\Log\LogLevel::DEBUG => [
+        'Tev\\Typo3Utils\\Log\\Writer\\FileWriter' => [
+            'logFile' => $tevConf['mail_logfile_path'] ?: 'typo3temp/logs/tev_mail.log'
+        ]
+    ]
+];
