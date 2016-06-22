@@ -1,2 +1,5 @@
 # cat=basic; type=string; label=Mail Logfile path, relative to TYPO3 base dir (leave blank for default 'typo3temp/logs/tev_mail.log')
 mail_logfile_path =
+
+# cat=basic; type=boolean; label=If autoloaded typoscripts conflict with the site disable it here.
+disable_typoscript_autoload =

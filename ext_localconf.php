@@ -4,10 +4,14 @@ if (!defined ('TYPO3_MODE')) {
     die('Access denied.');
 }
 
+$tevConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['tev']);
+
 // Automatically include TypoScript dependencies
 
-\FluidTYPO3\Flux\Core::addStaticTypoScript('EXT:css_styled_content/static/');
-\FluidTYPO3\Flux\Core::addStaticTypoScript('EXT:tev/Configuration/TypoScript');
+if (!$tevConf['disable_typoscript_autoload']) {
+    \FluidTYPO3\Flux\Core::addStaticTypoScript('EXT:css_styled_content/static/');
+    \FluidTYPO3\Flux\Core::addStaticTypoScript('EXT:tev/Configuration/TypoScript');
+}
 
 // Hook into RealURL config generation
 
@@ -21,8 +25,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Extbase\\Persistence\
 
 // Configure mail logger
 
-$tevConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['tev']);
-
 $GLOBALS['TYPO3_CONF_VARS']['LOG']['tevmail']['writerConfiguration'] = [
     \TYPO3\CMS\Core\Log\LogLevel::DEBUG => [
         'Tev\\Typo3Utils\\Log\\Writer\\FileWriter' => [
@@ -30,3 +32,4 @@ $GLOBALS['TYPO3_CONF_VARS']['LOG']['tevmail']['writerConfiguration'] = [
         ]
     ]
 ];
+
