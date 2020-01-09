@@ -31,14 +31,14 @@ class Misc
     *
     * @return mixed
     */
-    function array_key_exists_recursive($needle, $haystack)
+    public static function array_key_exists_recursive($needle, $haystack)
     {
         $result = array_key_exists($needle, $haystack);
         if ($result) return $result;
 
         foreach ($haystack as $v) {
             if (is_array($v)) {
-                $result = array_key_exists_recursive($needle, $v);
+                $result = Misc::array_key_exists_recursive($needle, $v);
             }
             if ($result) return $result;
         }
